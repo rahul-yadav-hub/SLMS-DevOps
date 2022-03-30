@@ -41,6 +41,6 @@ jobs:
     - name: Docker Push
       run: sudo docker push $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
     - name: Delete running application
-      run: sudo docker rm -f $(docker ps -a -q)
+      run: sudo docker rm -f $(sudo docker ps -a -q)
     - name: Deploy to docker
       run: sudo docker run -d --name slms -p 8080:8080 $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
