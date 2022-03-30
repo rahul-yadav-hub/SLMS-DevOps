@@ -40,4 +40,5 @@ jobs:
       run: sudo docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
     - name: Docker Push
       run: sudo docker push $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
-    
+    - name: Deploy to docker
+      run: sudo docker run -d --name slms -p 8080:8080 $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
