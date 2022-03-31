@@ -30,6 +30,12 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+      
+  push:
+
+    runs-on: self-hosted
+
+    steps:
     - name: docker login
       run: | # log into docker hub account
         sudo docker login -u $DOCKER_USER -p $DOCKER_PASSWORD  
@@ -40,6 +46,12 @@ jobs:
       run: sudo docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
     - name: Docker Push
       run: sudo docker push $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
+      
+  deploy:
+
+    runs-on: self-hosted
+
+    steps:
     - name: Delete running application
       run: sudo docker rm -f $(sudo docker ps -a -q)
     - name: Deploy to docker
