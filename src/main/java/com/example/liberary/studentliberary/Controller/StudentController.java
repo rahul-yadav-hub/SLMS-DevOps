@@ -16,8 +16,13 @@ public class StudentController
 {
    @Autowired
     StudentService studentService;
+    @GetMapping("/getData")
+    public String data()
+    {
+        return "hello";
+    }
 
-   @PostMapping("/createStudent")
+    @PostMapping("/createStudent")
    public ResponseEntity createStudent(@RequestBody Student student)
    {
        studentService.createStudent(student);
