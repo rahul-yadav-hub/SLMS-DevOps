@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet, useRoutes } from 'react-router-dom';
 import Navbar from './Components/navbar.comp';
+import CreateBook from './Pages/bookCreate.page';
 import Home from './Pages/home.page';
 
 function Global() {
@@ -17,29 +18,14 @@ function AppRoute() {
     {
       element: <Global />,
       children: [
-        //   {
-        //     path: '/login',
-        //     element: <Login />,
-        //   },
-        //   {
-        //     path: '/register',
-        //     element: <Register />,
-        //   },
         {
           path: '/',
           element: <Home />,
         },
-        //   { path: '/blog', element: <Blog /> },
-        //   { path: '/explore', element: <Explore /> },
-        //   { path: '/workspace/:id', element: <Workspace /> },
-        //   { path: '/offers', element: <Explore /> },
-        //   { path: '/profile', element: <UserProfile /> },
-        //   { path: '/createworkspace', element: <CreateWorkspace /> },
-        //   {
-        //     path: '/admin',
-        //     element: <Admin />,
-        //     children: [{ index: true, element: <div> hello</div> }],
-        //   },
+        {
+          path: '/createbook',
+          element: <CreateBook />,
+        },
       ],
     },
   ]);
