@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: /home/hrithik/Desktop/project/SLMS-DevOps
+    image: slms
+    container_name: slms-app
+    ports:
+            - "80:80"
+    volumes:
+        - app-data-vol:/opt/tomcat/webapps
+
+volumes:
+    app-data-vol:
+        external: false
