@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">SLMS</a>
+        <span className="btn btn-ghost normal-case text-xl">SLMS</span>
       </div>
       <div className="flex-none gap-1">
         <ul className="menu menu-horizontal p-1">

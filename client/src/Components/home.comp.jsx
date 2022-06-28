@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { BACKEND_URL } from '../config';
 
 async function getBooks() {
-  const { data } = await axios.get('http://192.168.29.94:8080/getBooks');
+  const { data } = await axios.get(`${BACKEND_URL}/getBooks`);
   return data;
 }
 
