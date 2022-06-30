@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BACKEND_URL } from '../config';
+
 
 const genres = [
   'FICTIONAL',
@@ -15,10 +17,7 @@ const genres = [
 ];
 
 async function submitBook(payload) {
-  const { data } = await axios.post(
-    'http://192.168.29.94:8080/createBook',
-    payload
-  );
+  const { data } = await axios.post(`${BACKEND_URL}/createBook`, payload);
   console.log('datas submitted', data);
   return true;
 }
@@ -34,7 +33,8 @@ export default function CreateBookComp() {
   });
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get('http://192.168.29.94:8080/getAuthor');
+      // const { data } = await axios.get('http://192.168.29.94:8080/getAuthor');
+      const { data } = await axios.get(`${BACKEND_URL}/getAuthor`);
       if (data) {
         const authorResponse = data.map((auth) => ({
           id: auth.id,
