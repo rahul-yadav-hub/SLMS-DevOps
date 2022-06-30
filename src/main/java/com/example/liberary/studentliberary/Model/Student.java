@@ -11,46 +11,49 @@ import java.util.Date;
 public class Student
 {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(unique = true)
+    //@Column(unique = true)
     private String emailId;
 
-   private String name;
-   private int age;  //in case we want  to check on the basis of age
+    private String name;
+    private int age; // in case we want to check on the basis of age while issuing
 
-   private String country;
-   //@OnetoOne
-    @ManyToOne //Many students are mapped to a card
-    @JoinColumn // in background @joinColumn is doing this join this column to the primary key of card table ; Card is parent entity;
+    private String country;
+
+
+
+    public Student() {
+    }
+
+    public Student(String email, String name, int age, String country) {
+        this.emailId = email;
+        this.name = name;
+        this.age = age;
+        this.country = country;
+    }
+
+    // alter table student add foreign key constraint card references Card(id)
+
+    @OneToOne
+    @JoinColumn   // join this column to the primary key of Card table
     @JsonIgnoreProperties("student")
     private Card card;
-    //alter table  student add foreign key constraint card  refrences card(id) it means card is parent table
+
 
     @CreationTimestamp
-    private Date createOn;
+    private Date createdOn;
 
     @UpdateTimestamp
     private Date updatedOn;
 
-    public Student()
-    {
-    }
-
-    public Student( String emailId, String name, int age, String country) {
-
-        this.emailId = emailId;
-        this.name = name;
-        this.age = age;
-        this.country = country;
-
-    }
-
-
-
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmailId() {
@@ -60,11 +63,6 @@ public class Student
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
 
     public String getName() {
         return name;
@@ -98,12 +96,12 @@ public class Student
         this.card = card;
     }
 
-    public Date getCreateOn() {
-        return createOn;
+    public Date getCreatedOn() {
+        return createdOn;
     }
 
-    public void setCreateOn(Date createOn) {
-        this.createOn = createOn;
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
     }
 
     public Date getUpdatedOn() {
@@ -114,20 +112,18 @@ public class Student
         this.updatedOn = updatedOn;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Student{" +
+//                "id=" + id +
+//                ", email='" + email + '\'' +
+//                ", name='" + name + '\'' +
+//                ", age=" + age +
+//                ", country='" + country + '\'' +
+//                ", createdOn=" + createdOn +
+//                ", updatedOn=" + updatedOn +
+//                '}';
+//    }
 
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", emailId='" + emailId + '\'' +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", country='" + country + '\'' +
-              //  ", card=" + card +
-                ", createOn=" + createOn +
-                ", updatedOn=" + updatedOn +
-                '}';
-    }
 }
 

@@ -63,7 +63,7 @@ public class TransactionService
           throw new Exception("the book limit has reached for this card");
       }
       book.setCard(card);
-        book.setAvailable(false);
+      book.setAvailable(false);
       List<Book> bookList=card.getBooks();//getter in card class which returns list of books
       bookList.add(book);
       card.setBooks(bookList);

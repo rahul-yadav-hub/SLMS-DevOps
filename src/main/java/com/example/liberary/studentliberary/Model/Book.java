@@ -9,7 +9,7 @@ import java.util.List;
 public class Book
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)//
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
@@ -18,34 +18,32 @@ public class Book
     private Genre genre;
 
     @ManyToOne
-    @JoinColumn// it means it is a child table because it means that it have foreign key
-    @JsonIgnoreProperties("booksWritten")//it means when you are fetching author don't fetch the booksWritten
-    private Author author;  // modification required bcz Book contains author so it tries to fetch author
+    @JoinColumn
+    @JsonIgnoreProperties("booksWritten")
+    private Author author;
 
     @ManyToOne
     @JoinColumn
     @JsonIgnoreProperties("books")
     private Card card;
 
-    @Column(columnDefinition = "TINYINT(1)") //size 1 bit
+
+    @Column(columnDefinition = "TINYINT(1)")
     private boolean available;
 
-    @OneToMany(mappedBy = "book",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("book")
     private List<Transaction> transactions;
 
-    public Book()
-    {
-
-    }
-    public Book(String name,Genre genre,Author author)
-    {
-        this.name=name;
-        this.genre=genre;
-        this.author=author;
-        this.available=true;
+    public Book() {
     }
 
+    public Book(String name, Genre genre, Author author) {
+        this.name = name;
+        this.genre = genre;
+        this.author = author;
+        this.available = true;
+    }
 
     public int getId() {
         return id;
@@ -71,12 +69,12 @@ public class Book
         this.genre = genre;
     }
 
-    public Author getAuthor() {
-        return author;
+    public boolean isAvailable() {
+        return available;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     public Card getCard() {
@@ -87,12 +85,12 @@ public class Book
         this.card = card;
     }
 
-    public boolean isAvailable() {
-        return available;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setAvailable(boolean available) {
-        this.available = available;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public List<Transaction> getTransactions() {
@@ -102,4 +100,5 @@ public class Book
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
+
 }

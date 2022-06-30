@@ -7,103 +7,11 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 @Entity
-public class Transaction {
+public class Transaction
+{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    private String transactionId= UUID.randomUUID().toString();//genreating random UUID
-
-    @ManyToOne
-    @JsonIgnoreProperties
-    @JoinColumn
-    private Card card;//many transaction mapped to the card
-
-    @ManyToOne
-    @JsonIgnoreProperties("transactions")
-    @JoinColumn
-    private Book book;   //in one transaction only one book is allowed
-
-    private int fineAmount;
-
-    @Column(columnDefinition = "TINYINT(1)")
-    private  boolean isIssueOperation;
-
-    @Enumerated(value=EnumType.STRING)
-    private TransactionStatus transactionStatus;
-
-    @CreationTimestamp
-    private Date transactionDate;
-
-    public Date getTransactionDate() {
-        return transactionDate;
-    }
-
-    public void setTransactionDate(Date transactionDate) {
-        this.transactionDate = transactionDate;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTransactionId() {
-        return transactionId;
-    }
-
-    public void setTransactionId(String transactionId) {
-        this.transactionId = transactionId;
-    }
-
-    public Card getCard() {
-        return card;
-    }
-
-    public void setCard(Card card) {
-        this.card = card;
-    }
-
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }
-
-    public int getFineAmount() {
-        return fineAmount;
-    }
-
-    public void setFineAmount(int fineAmount) {
-        this.fineAmount = fineAmount;
-    }
-
-    public boolean isIssueOperation()
-    {
-        return isIssueOperation;
-    }
-
-    public void setIssueOperation(boolean issueOperation) {
-        isIssueOperation = issueOperation;
-    }
-
-    public TransactionStatus getTransactionStatus() {
-        return transactionStatus;
-    }
-
-    public void setTransactionStatus(TransactionStatus transactionStatus)
-    {
-        this.transactionStatus = transactionStatus;
-    }
-}
-  /* @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private int id;
 
     private String transactionId = UUID.randomUUID().toString(); // externalId
 
@@ -190,6 +98,6 @@ public class Transaction {
 
     public void setTransactionDate(Date transactionDate) {
         this.transactionDate = transactionDate;
-    }*/
-
+    }
+}
 

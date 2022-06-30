@@ -8,7 +8,13 @@ import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Service
 public class StudentService
@@ -19,6 +25,7 @@ public class StudentService
     @Autowired
     StudentRepository studentRepository;
 
+
     @Autowired
     CardRepository cardRepository;
 
@@ -27,6 +34,15 @@ public class StudentService
         Card newCard=cardService.createAndReturn(student);//to create student and  card both parallely;
         logger.info("the card for the student is created with the details {} "+student ,newCard);
     }
+    public List<Student> getStudents()
+    {
+        return studentRepository.findAll(); //get will return null if id is not present
+    }
+    public Student getDetailsById(int id)
+    {
+        return studentRepository.findById(id).get();
+    }
+
 
     public void updateStudent(Student student)
     {

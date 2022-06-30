@@ -15,10 +15,7 @@ public class Card
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-// set of a cascade operation that can be propagated to a entity;   data should be fetch lazily when first accessed
-   //one card mapped to one student
     @OneToOne(mappedBy = "card", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-   //Note we dont have join column here because card is parent and student is child entity
     @JsonIgnoreProperties("card")
     private Student student;
 
@@ -35,15 +32,8 @@ public class Card
     @JsonIgnoreProperties("card")
     private List<Book> books;
 
-
-
-
-
-
-    public Card()
-    {
-
-        this.cardStatus=CardStatus.ACTIVATED;
+    public Card(){
+        this.cardStatus = CardStatus.ACTIVATED;
     }
 
     public int getId() {
@@ -93,20 +83,4 @@ public class Card
     public void setBooks(List<Book> books) {
         this.books = books;
     }
-
-
-    // @Override
-
-   /* @Override
-    public String toString() {
-        return "Card{" +
-                "id=" + id +
-                ", student=" + student +
-                ", createdOn=" + createdOn +
-                ", updatedOn=" + updatedOn +
-                ", cardStatus=" + cardStatus +
-                '}';
-        // hence these Student and Card are  bidirectional  so if we write card in student and student in card it will call
-        //themselves for infinite no.of time and  give stack overflow error.
-    }*/
 }

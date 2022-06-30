@@ -3,17 +3,23 @@ package com.example.liberary.studentliberary.Controller;
 import com.example.liberary.studentliberary.Model.Author;
 import com.example.liberary.studentliberary.Services.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.logging.Logger;
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class AuthorController
 {
     @Autowired
     AuthorService authorService;
+
+
 
   @PostMapping("/createAuthor")
     public ResponseEntity getAuthor(@RequestBody Author author)

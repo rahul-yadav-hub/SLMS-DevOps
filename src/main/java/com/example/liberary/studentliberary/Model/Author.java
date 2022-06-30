@@ -19,21 +19,18 @@ public class Author
     private int age;
     private String country;
 
-    @OneToMany(mappedBy = "author",cascade=CascadeType.ALL,fetch=FetchType.LAZY) //it means one author for many books
-    @JsonIgnoreProperties("author")//whenever you are trying to fetch the author fetch the author but  don't fetch the book again
-    private List<Book> booksWritten; // and author contains book in itself so there is stack overflow like condition here both calling each other
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("author")
+    private List<Book> booksWritten;
 
-    public Author()
-    {}
+    public Author() {
+    }
 
-    public Author( String name, String email, int age, String country)
-    {
-
+    public Author(String name, String email, int age, String country) {
         this.name = name;
         this.email = email;
         this.age = age;
         this.country = country;
-
     }
 
     public int getId() {
@@ -50,14 +47,6 @@ public class Author
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public int getAge() {
@@ -82,5 +71,13 @@ public class Author
 
     public void setBooksWritten(List<Book> booksWritten) {
         this.booksWritten = booksWritten;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

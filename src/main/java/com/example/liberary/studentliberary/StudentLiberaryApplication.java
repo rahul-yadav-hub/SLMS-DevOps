@@ -12,7 +12,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Arrays;
 
-@SpringBootApplication
+@SpringBootApplication//auto- configures the bean that is in the classpath alternative of
+//@EnableAutoConfiguration, @ComponentScan, and @Configuration.
+
 public class StudentLiberaryApplication// implements CommandLineRunner
 {
 
