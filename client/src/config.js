@@ -1,1 +1,1 @@
-export const { BACKEND_URL =  "http://192.168.29.94:8080" } = process.env;
+export const { BACKEND_URL =  "http://3.111.190.80/api" } = process.env;
