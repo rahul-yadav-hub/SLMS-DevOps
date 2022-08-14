@@ -21,6 +21,7 @@ jobs:
     runs-on: self-hosted
 
     steps:
+    - uses: actions/checkout@v3
     - name: docker login
       run: | # log into docker hub account
         sudo docker login -u $DOCKER_USER -p $DOCKER_PASSWORD  
