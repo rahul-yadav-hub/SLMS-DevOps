@@ -16,7 +16,7 @@ env:
   REPO_NAME: slms_frontend
 
 jobs:
-  build:
+  build-push-deploy:
 
     runs-on: self-hosted
 
@@ -29,15 +29,7 @@ jobs:
       id: date
       run: echo "::set-output name=date::$(date +'%Y-%m-%d--%M-%S')"
     - name: Build the Docker image # push The image to the docker hub
-      run: sudo docker build . --file client/Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
-
-    
-      
-  push-and-deploy:
-
-    runs-on: self-hosted
-
-    steps:
+      run: sudo docker build . --file client/Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }
     - name: Docker Push
       run: sudo docker push $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
     - name: Delete running application
