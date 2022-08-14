@@ -4,6 +4,9 @@ WORKDIR /app
 
 COPY . .
 # install node modules and build assets
+
+WORKDIR /app/client
+
 RUN npm install
 
 RUN npm run build
