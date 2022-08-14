@@ -5,7 +5,7 @@ FROM node:18 AS builder
 COPY client/ .
 # install node modules and build assets
 
-WORKDIR /app/client
+WORKDIR /app
 
 RUN npm install
 
@@ -17,6 +17,6 @@ WORKDIR /usr/share/nginx/html
 # Remove default nginx static assets
 RUN rm -rf ./*
 # Copy static assets from builder stage
-COPY --from=builder /app/client/build .
+COPY --from=builder /app/build .
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
