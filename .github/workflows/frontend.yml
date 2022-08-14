@@ -29,7 +29,7 @@ jobs:
       id: date
       run: echo "::set-output name=date::$(date +'%Y-%m-%d--%M-%S')"
     - name: Build the Docker image # push The image to the docker hub
-      run: sudo docker build . --file client/Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }
+      run: sudo docker build . --file client/Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
     - name: Docker Push
       run: sudo docker push $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
     - name: Delete running application
