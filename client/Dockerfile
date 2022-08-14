@@ -1,6 +1,6 @@
 FROM node:18 AS builder
 
-WORKDIR /app
+#WORKDIR /app
 
 COPY client/ .
 # install node modules and build assets
