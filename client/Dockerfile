@@ -17,6 +17,6 @@ WORKDIR /usr/share/nginx/html
 # Remove default nginx static assets
 RUN rm -rf ./*
 # Copy static assets from builder stage
-COPY --from=builder /app/build .
+COPY --from=builder /app/client/build .
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
