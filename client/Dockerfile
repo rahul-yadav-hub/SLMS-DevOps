@@ -2,7 +2,7 @@ FROM node:18 AS builder
 
 WORKDIR /app
 
-COPY . .
+COPY client/ .
 # install node modules and build assets
 
 WORKDIR /app/client
