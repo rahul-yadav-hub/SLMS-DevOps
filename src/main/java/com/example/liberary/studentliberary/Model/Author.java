@@ -82,4 +82,14 @@ public class Author
     public void setBooksWritten(List<Book> booksWritten) {
         this.booksWritten = booksWritten;
     }
+    public String toString() {
+        return "Author{" +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                ", country='" + country + '\'' +
+                /*", createdOn=" + createdOn +
+                ", updatedOn=" + updatedOn +*/
+                '}';
+    }
 }
