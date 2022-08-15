@@ -5,9 +5,8 @@ name: CI CD for React Frontend
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    paths:
+      - client/**
   workflow_dispatch:
     
 env:
