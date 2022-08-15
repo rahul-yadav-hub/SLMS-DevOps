@@ -33,6 +33,10 @@ public class StudentService
        studentRepository.updateStudentDetails(student);
 
     }
+    public Student getDetailsById(int id)
+    {
+        return studentRepository.findById(id).get();
+    }
     
     public List<Student> getStudents()
     {
