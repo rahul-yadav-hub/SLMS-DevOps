@@ -18,7 +18,12 @@ export default function Student() {
     const [reload, setReload] = useState(false);
     useEffect(() => {
         (async () => {
-            setData(await getStudents());
+            // setData(await getStudents());
+            const { data: response } = await axios.get(
+                `${BACKEND_URL}/getStudents`
+            );
+            console.log('data ', response);
+            setData(response);
         })();
     }, [reload]);
 
@@ -47,14 +52,22 @@ export default function Student() {
                         <tbody>
                             {data &&
                                 data.length &&
+                                Array.isArray(data) &&
                                 data
                                     .filter((student) => student.emailId)
                                     .map((student) => (
-                                        <tr key={student.id}>
-                                            <th>{student.id}</th>
-                                            <td>{student.name}</td>
-                                            <td>{student.age}</td>
-                                            <td>{student.emailId}</td>
+                                        <tr key={student?.id}>
+                                            <th>
+                                                {student?.id ?? 'loading...'}
+                                            </th>
+                                            <td>
+                                                {student?.name ??
+                                                    'something went wrong!'}
+                                            </td>
+                                            <td>{student?.age ?? 'age...'}</td>
+                                            <td>
+                                                {student?.emailId ?? 'email'}
+                                            </td>
                                             <td className="flex justify-center gap-1">
                                                 <Link
                                                     className="hover:bg-slate-300 rounded-lg"
