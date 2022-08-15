@@ -22,6 +22,16 @@ public class AuthorController
      return new ResponseEntity<>("the author is sucessfully added to the system", HttpStatus.CREATED);
 
   }
+  @GetMapping("/authorById")
+
+        public ResponseEntity getAuthorById(@RequestParam("id") int id)
+    {
+        Author obj1 = authorService.getAuthorById(id);
+        return new ResponseEntity<>("author details - " + obj1, HttpStatus.OK);
+
+
+
+    }
 
    /* @PostMapping("/updateAuthor")
     public ResponseEntity updateAuthor(@RequestBody Author author)
