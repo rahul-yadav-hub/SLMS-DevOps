@@ -32,6 +32,11 @@ public class StudentService
        studentRepository.updateStudentDetails(student);
 
     }
+    
+    public List<Student> getStudents()
+    {
+        return studentRepository.findAll(); //get will return null if id is not present
+    }
 
     public void deleteStudent(int id) //the id which we have passed  in deleteStudent deactivateCard()will take it first
     {
