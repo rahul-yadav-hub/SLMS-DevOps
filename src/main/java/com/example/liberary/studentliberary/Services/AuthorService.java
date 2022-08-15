@@ -16,6 +16,10 @@ public class AuthorService
     {
       authorRepository.save(author);
     }
+    public Author getAuthorById(int id)
+    {
+        return authorRepository.findById(id).get(); //get will return null if id is not present
+    }
    /* public void updateAuthor(Author author)
     {                                         //hw
         authorRepository.save(author);
