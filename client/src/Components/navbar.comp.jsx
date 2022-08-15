@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   return (
-      <div className="navbar bg-base-100">
-          <div className="flex-1">
-              <span className="btn btn-ghost normal-case text-xl">SLMS</span>
+      <div className="navbar flex-col gap-2 bg-base-100">
+          <div className="flex w-full ">
+              <span className="btn btn-ghost normal-case text-xl">
+                  Student Library Management System
+              </span>
           </div>
-          <div className="flex gap-1">
+          <div className=" w-full flex flex-start gap-1">
               <ul className="menu menu-horizontal gap-1 p-1">
                   <Link to="/" className="btn btn-secondary">
                       Books
