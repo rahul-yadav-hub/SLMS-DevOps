@@ -28,7 +28,18 @@ public class StudentController
        studentService.createStudent(student);
        return new ResponseEntity<>("the  student is successfully added to the system", HttpStatus.CREATED);
    }
+   
+   @GetMapping("/getStudents")
+   public ResponseEntity getStudent()
+   {
 
+      List<Student> al=studentService.getStudents();
+       return new ResponseEntity<>(al,HttpStatus.OK);
+
+
+
+   }
+   
    @PutMapping("/updateStudent")
     public ResponseEntity updateStudent(@RequestBody Student student)
    {
