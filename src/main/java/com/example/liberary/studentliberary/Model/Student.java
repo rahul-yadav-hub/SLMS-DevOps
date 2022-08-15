@@ -118,13 +118,12 @@ public class Student
     public String toString() {
         return "Student{" +
                 "id=" + id +
-                ", emailId='" + emailId + '\'' +
+                ", email='" + emailId + '\'' +
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", country='" + country + '\'' +
-              //  ", card=" + card +
-                ", createOn=" + createOn +
-                ", updatedOn=" + updatedOn +
+                /*", createdOn=" + createdOn +
+                ", updatedOn=" + updatedOn +*/
                 '}';
     }
 }
