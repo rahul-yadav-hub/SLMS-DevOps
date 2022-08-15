@@ -46,6 +46,11 @@ public class StudentController
        studentService.updateStudent(student); //while updating the student you have to pass all the fields what is the new value will be reflected as new
        return new  ResponseEntity<>("student is updated ",HttpStatus.ACCEPTED);
    }
+   @GetMapping("/studentById")
+    public ResponseEntity getStudentById(@RequestParam("id") int id){
+        Student obj = studentService.getDetailsById(id);
+        return new ResponseEntity<>("Student details - " + obj, HttpStatus.OK);
+    }
 
    @DeleteMapping("/deleteStudent")
     public ResponseEntity deleteStudent(@RequestParam("id")int id)
